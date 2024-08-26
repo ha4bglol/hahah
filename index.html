@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Рулетка</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            color: #d9534f;
+        }
+        .numbers {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px;
+        }
+        .number {
+            margin: 10px;
+            cursor: pointer;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            font-size: 18px;
+            width: 50px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .number:hover {
+            background-color: #f0f0f0;
+            transform: scale(1.05);
+        }
+        #results {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Числа от рулетката</h1>
+    <div id="numbers" class="numbers">
+        <!-- Числата от рулетката ще се генерират тук -->
+    </div>
+
+    <h2>Резултати:</h2>
+    <p id="results">Изберете число от рулетката.</p>
+
+    <script>
+        // Генерираме числата от рулетката
+        const numbers = [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36
+         
+        ];
+        
+        const numbersContainer = document.getElementById('numbers');
+
+        numbers.forEach(number => {
+            const div = document.createElement('div');
+            div.className = 'number';
+            div.textContent = number;
+            div.addEventListener('click', () => showResults(number));
+            numbersContainer.appendChild(div);
+        });
+
+        function showResults(selectedNumber) {
+            const index = numbers.indexOf(selectedNumber);
+
+            if (index === -1) {
+                document.getElementById('results').textContent = 'Числото не е намерено.';
+                return;
+            }
+
+            const getNumberAtIndex = (i) => numbers[(index + i) % numbers.length];
+
+            const ninth = getNumberAtIndex(9);
+            const eighteenth = getNumberAtIndex(18);
+            const twentySeventh = getNumberAtIndex(27);
+
+            document.getElementById('results').innerHTML = `
+                <strong>Резултати:</strong><br>
+                9-то число в дясно: ${ninth}<br>
+                18-то число в дясно: ${eighteenth}<br>
+                27-мо число в дясно: ${twentySeventh}
+            `;
+        }
+    </script>
+</body>
+</html>
+
