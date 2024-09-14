@@ -87,15 +87,15 @@
 
             const getNumberAtIndex = (i) => numbers[(index + i) % numbers.length];
 
-            const ninth = getNumberAtIndex(9);
-            const eighteenth = getNumberAtIndex(18);
-            const twentySeventh = getNumberAtIndex(27);
+            const ninth = getNumberAtIndex(11);
+            const eighteenth = getNumberAtIndex(23);
+            const twentySeventh = getNumberAtIndex(35);
 
             document.getElementById('results').innerHTML = `
                 <strong>Резултати:</strong><br>
-                9-то число в дясно: ${ninth}<br>
-                18-то число в дясно: ${eighteenth}<br>
-                27-мо число в дясно: ${twentySeventh}
+                11-то число в дясно: ${ninth}<br>
+                23-то число в дясно: ${eighteenth}<br>
+                35-мо число в дясно: ${twentySeventh}
             `;
         }
     </script>
